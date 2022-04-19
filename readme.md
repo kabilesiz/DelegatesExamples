@@ -14,4 +14,4 @@ Bu projede Action, Func ve Predicate delegelerini ele alacağız. Temel bazda he
 
 ### Predicate
 - Syntax : **Predicate<T>**
-- Predicate dönüş tipi bool olan delegelerdir. Syntax dan anlaşılacağı Tresult paremetresi almaz fakat Action dan farklı olarak biz biliriz ki bir delege eğer Predicate ise dönüş tipi kesinlikle bool'dur. (Bu delegeye özel olarak Extension class yapısı kullandım List<Product> için IsExistAsPredicate methodunu extension olarak kullanmayı tercih ettim.)
+- Predicate dönüş tipi bool olan delegelerdir. Syntax dan anlaşılacağı Tresult paremetresi almaz fakat Action dan farklı olarak biz biliriz ki bir delege eğer Predicate ise dönüş tipi kesinlikle bool'dur. (Bu delegeye özel olarak Extension class yapısı kullandım List<Product> için IsExistAsPredicate methoduna predicateDelegate adlı delegeyi parametre olarak geçip delegeyi başka bir fonksiyonda kullanma tarzına gitmeyi tercih ettim.)
