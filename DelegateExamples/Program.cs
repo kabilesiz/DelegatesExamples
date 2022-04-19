@@ -2,7 +2,7 @@
 
 using DelegateExamples;
 
-var products = new List<Products>()
+var products = new List<Product>()
 {
     new()
     {
@@ -23,13 +23,16 @@ var products = new List<Products>()
 
 var resultForAction = 0;
 var resultForFunc = 0;
+var isExistMacbook = false;
 // Assigning action delegate
-Action<List<Products>, int> actionDelegate = Delegates.GetTotalPriceAsAction;
+Action<List<Product>, int> actionDelegate = Delegates.GetTotalPriceAsAction;
 // Assigning action delegate
-Func<List<Products>, int> funcDelegate = Delegates.GetTotalPriceAsFunc;
-// Assigning predicate delegate in Delegate class 
+Func<List<Product>, int> funcDelegate = Delegates.GetTotalPriceAsFunc;
+// Assigning predicate delegate in Delegate class
+Predicate<string> predicateDelegate = Delegates.IsMacbookProAsPredicate;
+
 // running predicate delegate
-    // products.IsExistAsPredicate("MacBook Pro");
+isExistMacbook = products.IsExistAsPredicate(predicateDelegate);
 // running func delegate
 resultForFunc = funcDelegate(products);
 // running action delegate
@@ -38,5 +41,8 @@ actionDelegate(products, resultForAction);
 // getting info about delegate via console
 Console.WriteLine($"Result of Action Delegate : {resultForAction}");
 Console.WriteLine($"Result of Func Delegate : {resultForFunc}");
-Console.WriteLine($"Result of Predicate Delegate for Macbook Pro [must be true] : {products.IsExistAsPredicate("MacBook Pro")}");
-Console.WriteLine($"Result of Predicate Delegate for Monster Tulpar [must be false] : {products.IsExistAsPredicate("Monster Tulpar")}");
+Console.WriteLine($"Result of Predicate Delegate for Macbook Pro [must be true] : {isExistMacbook}");
+products.RemoveAt(0);
+Console.WriteLine($"After removing MacBook Pro from the product list");
+isExistMacbook = products.IsExistAsPredicate(predicateDelegate);
+Console.WriteLine($"Result of Predicate Delegate for Macbook Pro [must be false] : {isExistMacbook}");
